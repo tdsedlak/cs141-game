@@ -16,9 +16,25 @@ package edu.csupomona.cs.cs141.class_project;
  *
  */
 public class Enemy {
-	
-	public void lives() {
+	/**
+	 * 
+	 */
+	public void spawn() {
 		
 	}
-
+	/**
+	 * 
+	 */
+	public boolean check () {
+		return false;
+		
+	}
+	/**
+	 * 
+	 */
+	public boolean move () {
+		return false;
+		
+	}
+	
 }

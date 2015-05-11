@@ -16,5 +16,17 @@ package edu.csupomona.cs.cs141.class_project;
  *
  */
 public class UserInterface {
-
+	/**
+	 * 
+	 */
+	public void menu () {
+		
+	}
+	/**
+	 * 
+	 */
+	public boolean saveGame() {
+		return false;
+		
+	}
 }

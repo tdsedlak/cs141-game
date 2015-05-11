@@ -16,16 +16,25 @@ package edu.csupomona.cs.cs141.class_project;
  *
  */
 public class PowerUp {
-
-	public void bullet() {
+	/**
+	 * 
+	 */
+	public boolean bullet() {
+		return false;
 		
 	}
-	
-	public void invincibility()	{
+	/**
+	 * 
+	 */
+	public boolean invincibility()	{
+		return false;
 		
 	}
-	
-	public void radar () {
+	/**
+	 * 
+	 */
+	public boolean radar () {
+		return false;
 		
 	}
 

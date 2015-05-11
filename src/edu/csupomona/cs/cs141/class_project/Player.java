@@ -16,9 +16,63 @@ package edu.csupomona.cs.cs141.class_project;
  *
  */
 public class Player {
-	
-	public void lives() {
+	/**
+	 * 
+	 */
+	private int lives;
+	/**
+	 * 
+	 */
+	private int bullets;
+	/**
+	 * 
+	 */
+	private int spaces;
+	/**
+	 * 
+	 */
+	public void spawn() {
 		
 	}
-
+	/**
+	 * 
+	 */
+	public boolean check () {
+		return false;
+		
+	}
+	/**
+	 * 
+	 */
+	public void direction () {
+		
+	}
+	/**
+	 * 
+	 */
+	public boolean shoot () {
+		return false;
+		
+	}
+	/**
+	 * 
+	 */
+	public boolean move () {
+		return false; 
+		
+	}
+	/**
+	 * 
+	 */
+	public boolean died () {
+		return false;
+		
+	}
+	/**
+	 * 
+	 */
+	public void hasPowerUp() {
+		
+	}
+	
 }
