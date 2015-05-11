@@ -10,11 +10,19 @@
  * Team SyntaxErrors
  *   <Shane Avila, Celine Castillo, Andrew Russo, Tom>
  */
-package edu.csupomona.cs.cs141.prog_assgmnt_2;
+package edu.csupomona.cs.cs141.class_project;
 
 /**
  *
  */
-public class Player {
+public class NinjaAssassinMain {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
 
 }

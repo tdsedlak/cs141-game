@@ -10,11 +10,11 @@
  * Team SyntaxErrors
  *   <Shane Avila, Celine Castillo, Andrew Russo, Tom>
  */
-package edu.csupomona.cs.cs141.prog_assgmnt_2;
+package edu.csupomona.cs.cs141.class_project;
 
 /**
  *
  */
-public class Enemy {
+public class Player {
 
 }
