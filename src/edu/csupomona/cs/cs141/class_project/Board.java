@@ -19,19 +19,19 @@ public class Board {
 	/**
 	 * 
 	 */
-	public void boardLayout() {
+	public void initializeBoard() {
 		
 	}
 	/**
 	 * 
 	 */
-	public void safeZone() {
+	public void initializeSafeZone() {
 		
 	}
 	/**
 	 * 
 	 */
-	public void rooms() {
+	public void initializeRooms() {
 		
 	}
 	/**
