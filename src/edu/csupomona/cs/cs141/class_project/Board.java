@@ -12,10 +12,14 @@
  */
 package edu.csupomona.cs.cs141.class_project;
 
+import java.util.Random;
+
 /**
  *
  */
 public class Board {
+	Random rand = new Random();
+	
 	private char boardArray[][] = new char[9][9];
 	/**
 	 * 
@@ -23,6 +27,12 @@ public class Board {
 	public Board() {
 		char EMPTY = ' ';
 		char ROOM = 'R';
+		char PLAYER = 'P';
+		char ENEMY = 'E';
+		char INVIN = 'I';
+		char BULLET = 'B';
+		char RADAR = 'R';
+		char SUITCASE = 'S';
 		
 		for (int i = 0; i < boardArray.length; i++){
 			for (int j = 0; j < boardArray[i].length; j++){
@@ -40,6 +50,9 @@ public class Board {
 		boardArray [7][4] = ROOM;
 		boardArray [7][7] = ROOM;
 		
+		int CaseX = rand.nextInt(3) * 3 + 1;
+		int CaseY = rand.nextInt(3) * 3 + 1;
+		boardArray [CaseX][CaseY] = SUITCASE;
 		
 	}
 	public char[][] GiveBoard() {
