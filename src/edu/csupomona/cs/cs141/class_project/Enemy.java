@@ -15,7 +15,7 @@ package edu.csupomona.cs.cs141.class_project;
 /**
  *
  */
-public class Enemy {
+public class Enemy extends Parent {
 	/**
 	 * 
 	 */
@@ -26,13 +26,6 @@ public class Enemy {
 	 * 
 	 */
 	public boolean check () {
-		return false;
-		
-	}
-	/**
-	 * 
-	 */
-	public boolean move () {
 		return false;
 		
 	}

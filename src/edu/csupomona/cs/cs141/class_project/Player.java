@@ -15,19 +15,11 @@ package edu.csupomona.cs.cs141.class_project;
 /**
  *
  */
-public class Player {
+public class Player extends Parent {
 	/**
 	 * 
 	 */
 	private int lives;
-	/**
-	 * 
-	 */
-	private int bullets;
-	/**
-	 * 
-	 */
-	private int spaces;
 	/**
 	 * 
 	 */
@@ -57,22 +49,8 @@ public class Player {
 	/**
 	 * 
 	 */
-	public boolean move () {
-		return false; 
-		
-	}
-	/**
-	 * 
-	 */
 	public boolean died () {
 		return false;
 		
 	}
-	/**
-	 * 
-	 */
-	public void hasPowerUp() {
-		
-	}
-	
 }
