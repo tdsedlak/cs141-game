@@ -21,6 +21,8 @@ public class Board {
 	Random rand = new Random();
 	
 	private char boardArray[][] = new char[9][9];
+	
+	
 	/**
 	 * 
 	 */
@@ -31,8 +33,9 @@ public class Board {
 		char ENEMY = 'E';
 		char INVIN = 'I';
 		char BULLET = 'B';
-		char RADAR = 'R';
+		char RADAR = 'G';
 		char SUITCASE = 'S';
+		
 		
 		for (int i = 0; i < boardArray.length; i++){
 			for (int j = 0; j < boardArray[i].length; j++){
@@ -54,6 +57,9 @@ public class Board {
 		int CaseY = rand.nextInt(3) * 3 + 1;
 		boardArray [CaseX][CaseY] = SUITCASE;
 		
+		initializePowerUps(INVIN, BULLET, RADAR);
+		initializePlayerPosition(PLAYER);
+		
 	}
 	public char[][] GiveBoard() {
 		return boardArray;
@@ -69,6 +75,55 @@ public class Board {
 	 */
 	public void initializeRooms() {
 		
+	}
+	
+	public void initializePowerUps(char INVIN, char BULLET, char RADAR){
+		boolean isInvinEmpty = true;
+		boolean isBulletEmpty = true;
+		boolean isRadarEmpty = true;
+		int row = rand.nextInt(9);
+		int col = rand.nextInt(9);
+		
+		while(isInvinEmpty)
+		{
+			if(boardArray[row][col] == ' ') {
+			boardArray[row][col] = INVIN;
+			isInvinEmpty = false;
+			}
+			else{
+				row = rand.nextInt(9);
+				col = rand.nextInt(9);
+			}
+		}
+		
+		while(isBulletEmpty)
+		{
+			if(boardArray[row][col] == ' ') {
+			boardArray[row][col] = BULLET;
+			isBulletEmpty = false;
+			}
+			else{
+				row = rand.nextInt(9);
+				col = rand.nextInt(9);
+			}
+		}
+		
+		while(isRadarEmpty)
+		{
+			if(boardArray[row][col] == ' ') {
+			boardArray[row][col] = RADAR;
+			isRadarEmpty = false;
+			}
+			else{
+				row = rand.nextInt(9);
+				col = rand.nextInt(9);
+			}
+		}
+		
+	}
+	
+	public void initializePlayerPosition(char PLAYER) {
+			boardArray[0][8] = PLAYER;	
 	}
 	/**
 	 * 
