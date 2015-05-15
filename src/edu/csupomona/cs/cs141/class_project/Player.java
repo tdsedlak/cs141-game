@@ -15,7 +15,7 @@ package edu.csupomona.cs.cs141.class_project;
 /**
  *
  */
-public class Player extends Parent {
+public class Player extends Entity {
 	/**
 	 * 
 	 */

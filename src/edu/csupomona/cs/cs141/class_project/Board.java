@@ -16,38 +16,34 @@ package edu.csupomona.cs.cs141.class_project;
  *
  */
 public class Board {
-	private char board[][] = new char[9][9];
+	private char boardArray[][] = new char[9][9];
 	/**
 	 * 
 	 */
 	public Board() {
-		final char EMPTY = '*';
-		final char ROOM = 'R';
+		char EMPTY = '*';
+		char ROOM = 'R';
 		
-		for (int i = 0; i < board.length; i++){
-			for (int j = 0; j < board[i].length; j++){
-				board[i][j] = EMPTY;
+		for (int i = 0; i < boardArray.length; i++){
+			for (int j = 0; j < boardArray[i].length; j++){
+				boardArray[i][j] = EMPTY;
 			}
 		}
 		
-		board [1][1] = ROOM;
-		board [1][4] = ROOM;
-		board [1][7] = ROOM;
-		board [4][1] = ROOM;
-		board [4][4] = ROOM;
-		board [4][7] = ROOM;
-		board [7][1] = ROOM;
-		board [7][4] = ROOM;
-		board [7][7] = ROOM;
-		
-		for (int i = 0; i < board.length; i++){
-			for (int j = 0; j < board[i].length; j++){
-				System.out.printf("%-3S","[" + board[i][j] + "]");
-			}
-			System.out.println();
-		}
+		boardArray [1][1] = ROOM;
+		boardArray [1][4] = ROOM;
+		boardArray [1][7] = ROOM;
+		boardArray [4][1] = ROOM;
+		boardArray [4][4] = ROOM;
+		boardArray [4][7] = ROOM;
+		boardArray [7][1] = ROOM;
+		boardArray [7][4] = ROOM;
+		boardArray [7][7] = ROOM;
 		
 		
+	}
+	public char[][] GiveBoard() {
+		return boardArray;
 	}
 	/**
 	 * 
