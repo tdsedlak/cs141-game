@@ -27,7 +27,7 @@ public class GameEngine {
 		Board board = new Board();
 		UserInterface ui = new UserInterface();
 		
-		ui.PrintBoard(board.GiveBoard());
+		ui.PrintBoard(board.giveBoard());
 	}
 
 }
