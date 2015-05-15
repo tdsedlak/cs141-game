@@ -21,7 +21,7 @@ public class Board {
 	 * 
 	 */
 	public Board() {
-		char EMPTY = '*';
+		char EMPTY = ' ';
 		char ROOM = 'R';
 		
 		for (int i = 0; i < boardArray.length; i++){
