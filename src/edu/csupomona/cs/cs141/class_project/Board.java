@@ -12,7 +12,7 @@
  */
 package edu.csupomona.cs.cs141.class_project;
 
-import java.util.Random;
+import java.util.*;
 
 /**
  *
@@ -21,6 +21,7 @@ public class Board {
 	Random rand = new Random();
 	
 	private char boardArray[][] = new char[9][9];
+	private char safeZoneArray[][] = new char [9][9];
 	/**
 	 * 
 	 */
@@ -33,12 +34,14 @@ public class Board {
 		char BULLET = 'B';
 		char RADAR = 'G';
 		char SUITCASE = 'S';
+		char ZONE = 'Z';
 		
 		initializeBoard(EMPTY);
 		initializeRooms(ROOM);
 		initializeBriefcase(SUITCASE);
 		initializePowerUps(INVIN, BULLET, RADAR);
 		initializePlayerPosition(PLAYER);
+		initializeSafeZone(EMPTY, ROOM, ZONE);
 		initializeEnemyPositions(ENEMY);
 		
 	}
@@ -153,8 +156,29 @@ public class Board {
 			boardArray[0][8] = PLAYER;	
 	}
 	
-	public void initializeSafeZone() {
+	public void initializeSafeZone(char EMPTY, char ROOM, char ZONE) {
 		
+		for (int i = 0; i < safeZoneArray.length; i++){
+			for (int j = 0; j < safeZoneArray[i].length; j++){
+				safeZoneArray[i][j] = EMPTY;
+			}
+		}
+		
+		for (int i = 0; i < safeZoneArray.length - 6; i++){
+			for (int j = 6; j < safeZoneArray[i].length; j++){
+				safeZoneArray[i][j] = ZONE;
+			}
+		}
+		
+		safeZoneArray [1][1] = ROOM;
+		safeZoneArray [1][4] = ROOM;
+		safeZoneArray [1][7] = ROOM;
+		safeZoneArray [4][1] = ROOM;
+		safeZoneArray [4][4] = ROOM;
+		safeZoneArray [4][7] = ROOM;
+		safeZoneArray [7][1] = ROOM;
+		safeZoneArray [7][4] = ROOM;
+		safeZoneArray [7][7] = ROOM;	
 	}
 	
 	private void initializeEnemyPositions(char ENEMY) {
@@ -162,18 +186,19 @@ public class Board {
 		int numberOfEnemies = 0;
 		int row = rand.nextInt(9);
 		int col = rand.nextInt(9);
-			
+		
 			while(enemyPosition && numberOfEnemies < 5)
 			{
-				if(boardArray[row][col] == ' ') {
-				boardArray[row][col] = ENEMY;
-				numberOfEnemies++;
+				if(boardArray[row][col] == safeZoneArray[row][col] 
+						&& boardArray[row][col] == ' ' 
+						&& safeZoneArray[row][col] == ' ') {
+					boardArray[row][col] = ENEMY;
+					numberOfEnemies++;
 				}
 				else{
 					row = rand.nextInt(9);
 					col = rand.nextInt(9);
 				}
-				System.out.println(numberOfEnemies);
 			}	
 	}
 	
