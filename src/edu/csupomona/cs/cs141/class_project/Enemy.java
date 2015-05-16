@@ -19,7 +19,7 @@ public class Enemy extends Entity {
 	/**
 	 * 
 	 */
-	public void spawn() {
+	public void respawn() {
 		
 	}
 	/**

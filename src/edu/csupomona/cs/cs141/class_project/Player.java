@@ -23,7 +23,7 @@ public class Player extends Entity {
 	/**
 	 * 
 	 */
-	public void spawn() {
+	public void respawn() {
 		
 	}
 	/**

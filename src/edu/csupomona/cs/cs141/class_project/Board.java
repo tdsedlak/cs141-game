@@ -39,9 +39,10 @@ public class Board {
 		initializeBriefcase(SUITCASE);
 		initializePowerUps(INVIN, BULLET, RADAR);
 		initializePlayerPosition(PLAYER);
+		initializeEnemyPositions(ENEMY);
 		
 	}
-	
+
 	private void initializeBoard(char EMPTY) {
 		for (int i = 0; i < boardArray.length; i++){
 			for (int j = 0; j < boardArray[i].length; j++){
@@ -52,12 +53,6 @@ public class Board {
 	}
 	public char[][] giveBoard() {
 		return boardArray;
-	}
-	/**
-	 * 
-	 */
-	public void initializeSafeZone() {
-		
 	}
 	/**
 	 * 
@@ -110,17 +105,17 @@ public class Board {
 	}
 	
 	public void initializePowerUps(char INVIN, char BULLET, char RADAR){
-		boolean isInvinEmpty = true;
-		boolean isBulletEmpty = true;
-		boolean isRadarEmpty = true;
+		boolean invinPosition = true;
+		boolean bulletPosition = true;
+		boolean radarPosition = true;
 		int row = rand.nextInt(9);
 		int col = rand.nextInt(9);
 		
-		while(isInvinEmpty)
+		while(invinPosition)
 		{
 			if(boardArray[row][col] == ' ') {
 			boardArray[row][col] = INVIN;
-			isInvinEmpty = false;
+			invinPosition = false;
 			}
 			else{
 				row = rand.nextInt(9);
@@ -128,11 +123,11 @@ public class Board {
 			}
 		}
 		
-		while(isBulletEmpty)
+		while(bulletPosition)
 		{
 			if(boardArray[row][col] == ' ') {
 			boardArray[row][col] = BULLET;
-			isBulletEmpty = false;
+			bulletPosition = false;
 			}
 			else{
 				row = rand.nextInt(9);
@@ -140,11 +135,11 @@ public class Board {
 			}
 		}
 		
-		while(isRadarEmpty)
+		while(radarPosition)
 		{
 			if(boardArray[row][col] == ' ') {
 			boardArray[row][col] = RADAR;
-			isRadarEmpty = false;
+			radarPosition = false;
 			}
 			else{
 				row = rand.nextInt(9);
@@ -156,6 +151,30 @@ public class Board {
 	
 	public void initializePlayerPosition(char PLAYER) {
 			boardArray[0][8] = PLAYER;	
+	}
+	
+	public void initializeSafeZone() {
+		
+	}
+	
+	private void initializeEnemyPositions(char ENEMY) {
+		boolean enemyPosition = true;
+		int numberOfEnemies = 0;
+		int row = rand.nextInt(9);
+		int col = rand.nextInt(9);
+			
+			while(enemyPosition && numberOfEnemies < 5)
+			{
+				if(boardArray[row][col] == ' ') {
+				boardArray[row][col] = ENEMY;
+				numberOfEnemies++;
+				}
+				else{
+					row = rand.nextInt(9);
+					col = rand.nextInt(9);
+				}
+				System.out.println(numberOfEnemies);
+			}	
 	}
 	
 }
