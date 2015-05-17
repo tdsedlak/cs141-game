@@ -54,13 +54,14 @@ public class Board {
 		}
 	
 	}
+	
 	public char[][] giveBoard() {
 		return boardArray;
 	}
 	/**
 	 * 
 	 */
-	public void initializeRooms(char ROOM) {
+	private void initializeRooms(char ROOM) {
 		boardArray [1][1] = ROOM;
 		boardArray [1][4] = ROOM;
 		boardArray [1][7] = ROOM;
@@ -107,7 +108,7 @@ public class Board {
 		
 	}
 	
-	public void initializePowerUps(char INVIN, char BULLET, char RADAR){
+	private void initializePowerUps(char INVIN, char BULLET, char RADAR){
 		boolean invinPosition = true;
 		boolean bulletPosition = true;
 		boolean radarPosition = true;
@@ -152,11 +153,11 @@ public class Board {
 		
 	}
 	
-	public void initializePlayerPosition(char PLAYER) {
+	private void initializePlayerPosition(char PLAYER) {
 			boardArray[0][8] = PLAYER;	
 	}
 	
-	public void initializeSafeZone(char EMPTY, char ROOM, char ZONE) {
+	private void initializeSafeZone(char EMPTY, char ROOM, char ZONE) {
 		
 		for (int i = 0; i < safeZoneArray.length; i++){
 			for (int j = 0; j < safeZoneArray[i].length; j++){
