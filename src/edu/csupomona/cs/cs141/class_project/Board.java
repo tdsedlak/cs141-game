@@ -21,7 +21,7 @@ public class Board {
 	Random rand = new Random();
 	
 	private char boardArray[][] = new char[9][9];
-	private char safeZoneArray[][] = new char [9][9];
+	private char boardRulesArray[][] = new char [9][9];
 	/**
 	 * 
 	 */
@@ -37,12 +37,12 @@ public class Board {
 		char ZONE = 'Z';
 		
 		initializeBoard(EMPTY);
-		initializeRooms(ROOM);
+		initializeBoardRules(EMPTY, ROOM, ZONE);
+		initializeBothArrayRooms(ROOM);
 		initializeBriefcase(SUITCASE);
-		initializePowerUps(INVIN, BULLET, RADAR);
+		initializePowerUps(EMPTY, INVIN, BULLET, RADAR);
 		initializePlayerPosition(PLAYER);
-		initializeSafeZone(EMPTY, ROOM, ZONE);
-		initializeEnemyPositions(ENEMY);
+		initializeEnemyPositions(ENEMY, EMPTY);
 		
 	}
 
@@ -55,13 +55,28 @@ public class Board {
 	
 	}
 	
-	public char[][] giveBoard() {
-		return boardArray;
+	
+	private void initializeBoardRules(char EMPTY, char ROOM, char ZONE) {
+		
+		for (int i = 0; i < boardRulesArray.length; i++){
+			for (int j = 0; j < boardRulesArray[i].length; j++){
+				boardRulesArray[i][j] = EMPTY;
+			}
+		}
+		
+		/**
+		 * The 6 integer is here because it needs to be a 3X3
+		 * area for the safe zone, this allows that to happen.
+		 */
+		for (int i = 0; i < boardRulesArray.length - 6; i++){
+			for (int j = 6; j < boardRulesArray[i].length; j++){
+				boardRulesArray[i][j] = ZONE;
+			}
+		}
+			
 	}
-	/**
-	 * 
-	 */
-	private void initializeRooms(char ROOM) {
+	
+	private void initializeBothArrayRooms(char ROOM) {
 		boardArray [1][1] = ROOM;
 		boardArray [1][4] = ROOM;
 		boardArray [1][7] = ROOM;
@@ -71,6 +86,16 @@ public class Board {
 		boardArray [7][1] = ROOM;
 		boardArray [7][4] = ROOM;
 		boardArray [7][7] = ROOM;
+		
+		boardRulesArray [1][1] = ROOM;
+		boardRulesArray [1][4] = ROOM;
+		boardRulesArray [1][7] = ROOM;
+		boardRulesArray [4][1] = ROOM;
+		boardRulesArray [4][4] = ROOM;
+		boardRulesArray [4][7] = ROOM;
+		boardRulesArray [7][1] = ROOM;
+		boardRulesArray [7][4] = ROOM;
+		boardRulesArray [7][7] = ROOM;
 	}
 	
 	private void initializeBriefcase(char SUITCASE) {
@@ -78,37 +103,37 @@ public class Board {
 		
 		switch (chooseRoom) {
 		case 0:
-			boardArray [1][1] = SUITCASE;
+			boardRulesArray [1][1] = SUITCASE;
 			break;
 		case 1:
-			boardArray [1][4] = SUITCASE;
+			boardRulesArray [1][4] = SUITCASE;
 			break;
 		case 2:
-			boardArray [1][7] = SUITCASE;
+			boardRulesArray [1][7] = SUITCASE;
 			break;
 		case 3:
-			boardArray [4][1] = SUITCASE;
+			boardRulesArray [4][1] = SUITCASE;
 			break;
 		case 4:
-			boardArray [4][4] = SUITCASE;
+			boardRulesArray [4][4] = SUITCASE;
 			break;
 		case 5:
-			boardArray [4][7] = SUITCASE;
+			boardRulesArray [4][7] = SUITCASE;
 			break;
 		case 6:
-			boardArray [7][1] = SUITCASE;
+			boardRulesArray [7][1] = SUITCASE;
 			break;
 		case 7:
-			boardArray [7][4] = SUITCASE;
+			boardRulesArray [7][4] = SUITCASE;
 			break;
 		case 8:
-			boardArray [7][7] = SUITCASE;
+			boardRulesArray [7][7] = SUITCASE;
 			break;
 		}
 		
 	}
 	
-	private void initializePowerUps(char INVIN, char BULLET, char RADAR){
+	private void initializePowerUps(char EMPTY, char INVIN, char BULLET, char RADAR){
 		boolean invinPosition = true;
 		boolean bulletPosition = true;
 		boolean radarPosition = true;
@@ -117,7 +142,7 @@ public class Board {
 		
 		while(invinPosition)
 		{
-			if(boardArray[row][col] == ' ') {
+			if(boardArray[row][col] == EMPTY) {
 			boardArray[row][col] = INVIN;
 			invinPosition = false;
 			}
@@ -129,7 +154,7 @@ public class Board {
 		
 		while(bulletPosition)
 		{
-			if(boardArray[row][col] == ' ') {
+			if(boardArray[row][col] == EMPTY) {
 			boardArray[row][col] = BULLET;
 			bulletPosition = false;
 			}
@@ -141,7 +166,7 @@ public class Board {
 		
 		while(radarPosition)
 		{
-			if(boardArray[row][col] == ' ') {
+			if(boardArray[row][col] == EMPTY) {
 			boardArray[row][col] = RADAR;
 			radarPosition = false;
 			}
@@ -157,32 +182,7 @@ public class Board {
 			boardArray[0][8] = PLAYER;	
 	}
 	
-	private void initializeSafeZone(char EMPTY, char ROOM, char ZONE) {
-		
-		for (int i = 0; i < safeZoneArray.length; i++){
-			for (int j = 0; j < safeZoneArray[i].length; j++){
-				safeZoneArray[i][j] = EMPTY;
-			}
-		}
-		
-		for (int i = 0; i < safeZoneArray.length - 6; i++){
-			for (int j = 6; j < safeZoneArray[i].length; j++){
-				safeZoneArray[i][j] = ZONE;
-			}
-		}
-		
-		safeZoneArray [1][1] = ROOM;
-		safeZoneArray [1][4] = ROOM;
-		safeZoneArray [1][7] = ROOM;
-		safeZoneArray [4][1] = ROOM;
-		safeZoneArray [4][4] = ROOM;
-		safeZoneArray [4][7] = ROOM;
-		safeZoneArray [7][1] = ROOM;
-		safeZoneArray [7][4] = ROOM;
-		safeZoneArray [7][7] = ROOM;	
-	}
-	
-	private void initializeEnemyPositions(char ENEMY) {
+	private void initializeEnemyPositions(char ENEMY, char EMPTY) {
 		boolean enemyPosition = true;
 		int numberOfEnemies = 0;
 		int row = rand.nextInt(9);
@@ -190,9 +190,9 @@ public class Board {
 		
 			while(enemyPosition && numberOfEnemies < 5)
 			{
-				if(boardArray[row][col] == safeZoneArray[row][col] 
-						&& boardArray[row][col] == ' ' 
-						&& safeZoneArray[row][col] == ' ') {
+				if(boardArray[row][col] == boardRulesArray[row][col] 
+						&& boardArray[row][col] == EMPTY 
+						&& boardRulesArray[row][col] == EMPTY) {
 					boardArray[row][col] = ENEMY;
 					numberOfEnemies++;
 				}
@@ -202,5 +202,10 @@ public class Board {
 				}
 			}	
 	}
+	
+	public char[][] giveBoard() {
+		return boardArray;
+	}
+	
 	
 }
