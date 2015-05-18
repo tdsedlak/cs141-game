@@ -15,7 +15,7 @@ package edu.csupomona.cs.cs141.class_project;
 /**
  *
  */
-public class Player {
+public class Player extends Entity {
 	/**
 	 * 
 	 */
@@ -23,15 +23,7 @@ public class Player {
 	/**
 	 * 
 	 */
-	private int bullets;
-	/**
-	 * 
-	 */
-	private int spaces;
-	/**
-	 * 
-	 */
-	public void spawn() {
+	public void respawn() {
 		
 	}
 	/**
@@ -57,22 +49,8 @@ public class Player {
 	/**
 	 * 
 	 */
-	public boolean move () {
-		return false; 
-		
-	}
-	/**
-	 * 
-	 */
 	public boolean died () {
 		return false;
 		
 	}
-	/**
-	 * 
-	 */
-	public void hasPowerUp() {
-		
-	}
-	
 }
