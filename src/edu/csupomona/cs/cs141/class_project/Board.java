@@ -103,31 +103,31 @@ public class Board {
 		
 		switch (chooseRoom) {
 		case 0:
-			boardRulesArray [1][1] = SUITCASE;
+			boardArray [1][1] = SUITCASE;
 			break;
 		case 1:
-			boardRulesArray [1][4] = SUITCASE;
+			boardArray [1][4] = SUITCASE;
 			break;
 		case 2:
-			boardRulesArray [1][7] = SUITCASE;
+			boardArray [1][7] = SUITCASE;
 			break;
 		case 3:
-			boardRulesArray [4][1] = SUITCASE;
+			boardArray [4][1] = SUITCASE;
 			break;
 		case 4:
-			boardRulesArray [4][4] = SUITCASE;
+			boardArray [4][4] = SUITCASE;
 			break;
 		case 5:
-			boardRulesArray [4][7] = SUITCASE;
+			boardArray [4][7] = SUITCASE;
 			break;
 		case 6:
-			boardRulesArray [7][1] = SUITCASE;
+			boardArray [7][1] = SUITCASE;
 			break;
 		case 7:
-			boardRulesArray [7][4] = SUITCASE;
+			boardArray [7][4] = SUITCASE;
 			break;
 		case 8:
-			boardRulesArray [7][7] = SUITCASE;
+			boardArray [7][7] = SUITCASE;
 			break;
 		}
 		
