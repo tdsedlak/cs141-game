@@ -19,24 +19,8 @@ public class Player extends Entity {
 	/**
 	 * 
 	 */
-	private int lives;
-	/**
-	 * 
-	 */
-	public void respawn() {
-		
-	}
-	/**
-	 * 
-	 */
 	public boolean check () {
 		return false;
-		
-	}
-	/**
-	 * 
-	 */
-	public void direction () {
 		
 	}
 	/**
