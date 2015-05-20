@@ -12,7 +12,7 @@
  */
 package edu.csupomona.cs.cs141.class_project;
 
-import java.util.*;
+import java.util.Random;
 
 /**
  *
