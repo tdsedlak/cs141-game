@@ -21,7 +21,6 @@ public class NinjaAssassinMain {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		GameEngine GameEngine = new GameEngine();
 		GameEngine.Start();
 
