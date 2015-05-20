@@ -30,10 +30,17 @@ public class UserInterface {
 		
 	}
 	
-	public void PrintBoard(char board[][]) {
+	public void PrintBoard(char board[][], char boardRules[][]) {
 		for (int i = 0; i < board.length; i++){
 			for (int j = 0; j < board[i].length; j++){
 				System.out.printf("%-3S","[" + board[j][i] + "]");
+			}
+			System.out.println();
+		}
+		System.out.println();
+		for (int i = 0; i < boardRules.length; i++){
+			for (int j = 0; j < boardRules[i].length; j++){
+				System.out.printf("%-3S","[" + boardRules[j][i] + "]");
 			}
 			System.out.println();
 		}
