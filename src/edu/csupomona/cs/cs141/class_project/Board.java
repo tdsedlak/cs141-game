@@ -188,7 +188,7 @@ public class Board {
 		int row = rand.nextInt(9);
 		int col = rand.nextInt(9);
 		
-			while(enemyPosition && numberOfEnemies < 5)
+			while(enemyPosition && numberOfEnemies < 6)
 			{
 				if(boardArray[row][col] == boardRulesArray[row][col] 
 						&& boardArray[row][col] == EMPTY 
