@@ -46,7 +46,7 @@ public class Board {
 		
 	}
 
-	private void initializeBoard(char EMPTY) {
+	public void initializeBoard(char EMPTY) {
 		for (int i = 0; i < boardArray.length; i++){
 			for (int j = 0; j < boardArray[i].length; j++){
 				boardArray[i][j] = EMPTY;
@@ -56,7 +56,7 @@ public class Board {
 	}
 	
 	
-	private void initializeBoardRules(char EMPTY, char ROOM, char ZONE) {
+	public void initializeBoardRules(char EMPTY, char ROOM, char ZONE) {
 		
 		for (int i = 0; i < boardRulesArray.length; i++){
 			for (int j = 0; j < boardRulesArray[i].length; j++){
@@ -76,7 +76,7 @@ public class Board {
 			
 	}
 	
-	private void initializeBothArrayRooms(char ROOM) {
+	public void initializeBothArrayRooms(char ROOM) {
 		boardArray [1][1] = ROOM;
 		boardArray [1][4] = ROOM;
 		boardArray [1][7] = ROOM;
@@ -98,7 +98,7 @@ public class Board {
 		boardRulesArray [7][7] = ROOM;
 	}
 	
-	private void initializeBriefcase(char SUITCASE) {
+	public void initializeBriefcase(char SUITCASE) {
 		int chooseRoom = rand.nextInt(9);
 		
 		switch (chooseRoom) {
@@ -133,7 +133,7 @@ public class Board {
 		
 	}
 	
-	private void initializePowerUps(char EMPTY, char INVIN, char BULLET, char RADAR){
+	public void initializePowerUps(char EMPTY, char INVIN, char BULLET, char RADAR){
 		boolean invinPosition = true;
 		boolean bulletPosition = true;
 		boolean radarPosition = true;
@@ -178,11 +178,11 @@ public class Board {
 		
 	}
 	
-	private void initializePlayerPosition(char PLAYER) {
+	public void initializePlayerPosition(char PLAYER) {
 			boardArray[0][8] = PLAYER;	
 	}
 	
-	private void initializeEnemyPositions(char ENEMY, char EMPTY) {
+	public void initializeEnemyPositions(char ENEMY, char EMPTY) {
 		boolean enemyPosition = true;
 		int numberOfEnemies = 0;
 		int row = rand.nextInt(9);
