@@ -37,7 +37,9 @@ public class UserInterface {
 			}
 			System.out.println();
 		}
+		
 		System.out.println();
+		
 		for (int i = 0; i < boardRules.length; i++){
 			for (int j = 0; j < boardRules[i].length; j++){
 				System.out.printf("%-3S","[" + boardRules[j][i] + "]");

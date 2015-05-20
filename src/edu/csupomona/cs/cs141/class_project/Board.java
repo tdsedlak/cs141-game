@@ -183,12 +183,11 @@ public class Board {
 	}
 	
 	public void initializeEnemyPositions(char ENEMY, char EMPTY) {
-		boolean enemyPosition = true;
 		int numberOfEnemies = 0;
 		int row = rand.nextInt(9);
 		int col = rand.nextInt(9);
 		
-			while(enemyPosition && numberOfEnemies < 6)
+			while(numberOfEnemies < 6)
 			{
 				if(boardArray[row][col] == boardRulesArray[row][col] 
 						&& boardArray[row][col] == EMPTY 
