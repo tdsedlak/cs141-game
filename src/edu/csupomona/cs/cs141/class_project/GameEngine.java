@@ -22,5 +22,12 @@ public class GameEngine {
 	public void debug () {
 		
 	}
+	public void Start() {
+		Player player = new Player();
+		Board board = new Board();
+		UserInterface ui = new UserInterface();
+		
+		ui.PrintBoard(board.giveBoard());
+	}
 
 }

@@ -15,24 +15,17 @@ package edu.csupomona.cs.cs141.class_project;
 /**
  *
  */
-public class Enemy {
+public class Enemy extends Entity {
 	/**
 	 * 
 	 */
-	public void spawn() {
+	public void respawn() {
 		
 	}
 	/**
 	 * 
 	 */
 	public boolean check () {
-		return false;
-		
-	}
-	/**
-	 * 
-	 */
-	public boolean move () {
 		return false;
 		
 	}
