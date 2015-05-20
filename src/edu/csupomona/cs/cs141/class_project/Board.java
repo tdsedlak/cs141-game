@@ -22,6 +22,7 @@ public class Board {
 	
 	private char boardArray[][] = new char[9][9];
 	private char boardRulesArray[][] = new char [9][9];
+	private char powerUpArray[][] = new char [9][9];
 	/**
 	 * 
 	 */
@@ -36,8 +37,9 @@ public class Board {
 		char SUITCASE = 'S';
 		char ZONE = 'Z';
 		
-		initializeBoard(EMPTY);
-		initializeBoardRules(EMPTY, ROOM, ZONE);
+		initializeBoardArray(EMPTY);
+		initializeBoardRulesArray(EMPTY, ZONE);
+		initializePowerUpArray(EMPTY);
 		initializeBothArrayRooms(ROOM);
 		initializeBriefcase(SUITCASE);
 		initializePowerUps(EMPTY, INVIN, BULLET, RADAR);
@@ -46,17 +48,16 @@ public class Board {
 		
 	}
 
-	public void initializeBoard(char EMPTY) {
+	public void initializeBoardArray(char EMPTY) {
 		for (int i = 0; i < boardArray.length; i++){
 			for (int j = 0; j < boardArray[i].length; j++){
 				boardArray[i][j] = EMPTY;
 			}
 		}
-	
 	}
 	
 	
-	public void initializeBoardRules(char EMPTY, char ROOM, char ZONE) {
+	public void initializeBoardRulesArray(char EMPTY, char ZONE) {
 		
 		for (int i = 0; i < boardRulesArray.length; i++){
 			for (int j = 0; j < boardRulesArray[i].length; j++){
@@ -74,6 +75,14 @@ public class Board {
 			}
 		}
 			
+	}
+	
+	public void initializePowerUpArray(char EMPTY) {
+		for (int i = 0; i < powerUpArray.length; i++){
+			for (int j = 0; j < powerUpArray[i].length; j++){
+				powerUpArray[i][j] = EMPTY;
+			}
+		}
 	}
 	
 	public void initializeBothArrayRooms(char ROOM) {
@@ -96,6 +105,16 @@ public class Board {
 		boardRulesArray [7][1] = ROOM;
 		boardRulesArray [7][4] = ROOM;
 		boardRulesArray [7][7] = ROOM;
+		
+		powerUpArray [1][1] = ROOM;
+		powerUpArray [1][4] = ROOM;
+		powerUpArray [1][7] = ROOM;
+		powerUpArray [4][1] = ROOM;
+		powerUpArray [4][4] = ROOM;
+		powerUpArray [4][7] = ROOM;
+		powerUpArray [7][1] = ROOM;
+		powerUpArray [7][4] = ROOM;
+		powerUpArray [7][7] = ROOM;
 	}
 	
 	public void initializeBriefcase(char SUITCASE) {
@@ -144,6 +163,7 @@ public class Board {
 		{
 			if(boardArray[row][col] == EMPTY) {
 			boardArray[row][col] = INVIN;
+			powerUpArray[row][col] = INVIN;
 			invinPosition = false;
 			}
 			else{
@@ -156,6 +176,7 @@ public class Board {
 		{
 			if(boardArray[row][col] == EMPTY) {
 			boardArray[row][col] = BULLET;
+			powerUpArray[row][col] = BULLET;
 			bulletPosition = false;
 			}
 			else{
@@ -168,6 +189,7 @@ public class Board {
 		{
 			if(boardArray[row][col] == EMPTY) {
 			boardArray[row][col] = RADAR;
+			powerUpArray[row][col] = RADAR;
 			radarPosition = false;
 			}
 			else{
@@ -206,6 +228,10 @@ public class Board {
 	
 	public char[][] giveBoardRules() {
 		return boardRulesArray;
+	}
+	
+	public char[][] givePowerUpArray() {
+		return powerUpArray;
 	}
 	
 	
