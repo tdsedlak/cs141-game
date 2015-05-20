@@ -189,9 +189,7 @@ public class Board {
 		
 			while(numberOfEnemies < 6)
 			{
-				if(boardArray[row][col] == boardRulesArray[row][col] 
-						&& boardArray[row][col] == EMPTY 
-						&& boardRulesArray[row][col] == EMPTY) {
+				if(boardArray[row][col] == EMPTY && boardRulesArray[row][col] == EMPTY) {
 					boardArray[row][col] = ENEMY;
 					numberOfEnemies++;
 				}
