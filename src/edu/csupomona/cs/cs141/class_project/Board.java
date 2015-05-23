@@ -12,7 +12,7 @@
  */
 package edu.csupomona.cs.cs141.class_project;
 
-import java.util.*;
+import java.util.Random;
 
 /**
  *
@@ -22,6 +22,7 @@ public class Board {
 	
 	private char boardArray[][] = new char[9][9];
 	private char boardRulesArray[][] = new char [9][9];
+	private char powerUpArray[][] = new char [9][9];
 	/**
 	 * 
 	 */
@@ -36,8 +37,9 @@ public class Board {
 		char SUITCASE = 'S';
 		char ZONE = 'Z';
 		
-		initializeBoard(EMPTY);
-		initializeBoardRules(EMPTY, ROOM, ZONE);
+		initializeBoardArray(EMPTY);
+		initializeBoardRulesArray(EMPTY, ZONE);
+		initializePowerUpArray(EMPTY);
 		initializeBothArrayRooms(ROOM);
 		initializeBriefcase(SUITCASE);
 		initializePowerUps(EMPTY, INVIN, BULLET, RADAR);
@@ -46,17 +48,16 @@ public class Board {
 		
 	}
 
-	private void initializeBoard(char EMPTY) {
+	public void initializeBoardArray(char EMPTY) {
 		for (int i = 0; i < boardArray.length; i++){
 			for (int j = 0; j < boardArray[i].length; j++){
 				boardArray[i][j] = EMPTY;
 			}
 		}
-	
 	}
 	
 	
-	private void initializeBoardRules(char EMPTY, char ROOM, char ZONE) {
+	public void initializeBoardRulesArray(char EMPTY, char ZONE) {
 		
 		for (int i = 0; i < boardRulesArray.length; i++){
 			for (int j = 0; j < boardRulesArray[i].length; j++){
@@ -76,7 +77,15 @@ public class Board {
 			
 	}
 	
-	private void initializeBothArrayRooms(char ROOM) {
+	public void initializePowerUpArray(char EMPTY) {
+		for (int i = 0; i < powerUpArray.length; i++){
+			for (int j = 0; j < powerUpArray[i].length; j++){
+				powerUpArray[i][j] = EMPTY;
+			}
+		}
+	}
+	
+	public void initializeBothArrayRooms(char ROOM) {
 		boardArray [1][1] = ROOM;
 		boardArray [1][4] = ROOM;
 		boardArray [1][7] = ROOM;
@@ -96,9 +105,19 @@ public class Board {
 		boardRulesArray [7][1] = ROOM;
 		boardRulesArray [7][4] = ROOM;
 		boardRulesArray [7][7] = ROOM;
+		
+		powerUpArray [1][1] = ROOM;
+		powerUpArray [1][4] = ROOM;
+		powerUpArray [1][7] = ROOM;
+		powerUpArray [4][1] = ROOM;
+		powerUpArray [4][4] = ROOM;
+		powerUpArray [4][7] = ROOM;
+		powerUpArray [7][1] = ROOM;
+		powerUpArray [7][4] = ROOM;
+		powerUpArray [7][7] = ROOM;
 	}
 	
-	private void initializeBriefcase(char SUITCASE) {
+	public void initializeBriefcase(char SUITCASE) {
 		int chooseRoom = rand.nextInt(9);
 		
 		switch (chooseRoom) {
@@ -133,7 +152,7 @@ public class Board {
 		
 	}
 	
-	private void initializePowerUps(char EMPTY, char INVIN, char BULLET, char RADAR){
+	public void initializePowerUps(char EMPTY, char INVIN, char BULLET, char RADAR){
 		boolean invinPosition = true;
 		boolean bulletPosition = true;
 		boolean radarPosition = true;
@@ -144,6 +163,7 @@ public class Board {
 		{
 			if(boardArray[row][col] == EMPTY) {
 			boardArray[row][col] = INVIN;
+			powerUpArray[row][col] = INVIN;
 			invinPosition = false;
 			}
 			else{
@@ -156,6 +176,7 @@ public class Board {
 		{
 			if(boardArray[row][col] == EMPTY) {
 			boardArray[row][col] = BULLET;
+			powerUpArray[row][col] = BULLET;
 			bulletPosition = false;
 			}
 			else{
@@ -168,6 +189,7 @@ public class Board {
 		{
 			if(boardArray[row][col] == EMPTY) {
 			boardArray[row][col] = RADAR;
+			powerUpArray[row][col] = RADAR;
 			radarPosition = false;
 			}
 			else{
@@ -178,21 +200,18 @@ public class Board {
 		
 	}
 	
-	private void initializePlayerPosition(char PLAYER) {
+	public void initializePlayerPosition(char PLAYER) {
 			boardArray[0][8] = PLAYER;	
 	}
 	
-	private void initializeEnemyPositions(char ENEMY, char EMPTY) {
-		boolean enemyPosition = true;
+	public void initializeEnemyPositions(char ENEMY, char EMPTY) {
 		int numberOfEnemies = 0;
 		int row = rand.nextInt(9);
 		int col = rand.nextInt(9);
 		
-			while(enemyPosition && numberOfEnemies < 5)
+			while(numberOfEnemies < 6)
 			{
-				if(boardArray[row][col] == boardRulesArray[row][col] 
-						&& boardArray[row][col] == EMPTY 
-						&& boardRulesArray[row][col] == EMPTY) {
+				if(boardArray[row][col] == EMPTY && boardRulesArray[row][col] == EMPTY) {
 					boardArray[row][col] = ENEMY;
 					numberOfEnemies++;
 				}
@@ -205,6 +224,14 @@ public class Board {
 	
 	public char[][] giveBoard() {
 		return boardArray;
+	}
+	
+	public char[][] giveBoardRules() {
+		return boardRulesArray;
+	}
+	
+	public char[][] givePowerUpArray() {
+		return powerUpArray;
 	}
 	
 	
