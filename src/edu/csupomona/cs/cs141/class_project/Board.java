@@ -201,6 +201,7 @@ public class Board {
 	}
 	
 	public void initializePlayerPosition(char PLAYER) {
+		Player player = new Player();
 			boardArray[0][8] = PLAYER;	
 	}
 	
@@ -214,6 +215,7 @@ public class Board {
 				if(boardArray[row][col] == EMPTY && boardRulesArray[row][col] == EMPTY) {
 					boardArray[row][col] = ENEMY;
 					numberOfEnemies++;
+					CreateEnemy(numberOfEnemies, row, col);
 				}
 				else{
 					row = rand.nextInt(9);
@@ -222,6 +224,24 @@ public class Board {
 			}	
 	}
 	
+	private void CreateEnemy(int numberOfEnemies, int row, int col) {
+		switch (numberOfEnemies) {
+		case 0: Enemy enemy0 = new Enemy(row, col);
+				break;
+		case 1: Enemy enemy1 = new Enemy(row, col);
+				break;
+		case 2: Enemy enemy2 = new Enemy(row, col);
+				break;
+		case 3: Enemy enemy3 = new Enemy(row, col);
+				break;
+		case 4: Enemy enemy4 = new Enemy(row, col);
+				break;
+		case 5: Enemy enemy5 = new Enemy(row, col);
+				break;
+		}
+		
+	}
+
 	public char[][] giveBoard() {
 		return boardArray;
 	}
