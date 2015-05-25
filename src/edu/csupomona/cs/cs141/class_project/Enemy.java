@@ -12,12 +12,25 @@
  */
 package edu.csupomona.cs.cs141.class_project;
 
+import java.util.Random;
+
 /**
  *
  */
 public class Enemy extends Entity {
 	
+	Random rand = new Random();
+	
 	public Enemy(int x, int y) {
 		super(x, y);
+	}
+	
+	public int chooseDirection() {
+		return rand.nextInt(4);
+	}
+
+	public void Turn() {
+		// TODO Auto-generated method stub
+		
 	}
 }
