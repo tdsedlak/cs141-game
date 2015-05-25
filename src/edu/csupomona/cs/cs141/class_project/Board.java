@@ -273,6 +273,9 @@ public class Board {
 	}
 
 	public void Turn() {
+		if(AllPlayerDangerCheck()) {
+			// This would be where we end the game since the enemy killed the player.
+		}
 		player.Turn();
 		enemy0.Turn();
 		enemy1.Turn();
@@ -280,6 +283,66 @@ public class Board {
 		enemy3.Turn();
 		enemy4.Turn();
 		enemy5.Turn();
+	}
+
+	public boolean PlayerDangerCheck(Player player, Enemy enemy) {
+		int playerPosX = player.giveXPos();
+		int playerPosY = player.giveYPos();
+		int enemyPosX = enemy.giveXPos();
+		int enemyPosY = enemy.giveYPos();
+		
+		if(playerPosX == enemyPosX) {
+			if(playerPosY == enemyPosY + 1 || playerPosY == enemyPosY - 1) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+		else if(playerPosY == enemyPosY) {
+			if(playerPosX == enemyPosX + 1 || playerPosX == enemyPosX - 1) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+		else {
+			return false;
+		}
+	}
+	
+	public boolean AllPlayerDangerCheck() {
+		
+		boolean danger = false;
+		
+		for(int i = 0; i < 5; i++) {
+			
+			while(danger == false) {
+				
+				switch (i) {
+				
+				case 0: danger = PlayerDangerCheck(player, enemy0);
+				break;
+						
+				case 1: danger = PlayerDangerCheck(player, enemy1);
+				break;
+					
+				case 2: danger = PlayerDangerCheck(player, enemy2);
+				break;
+					
+				case 3: danger = PlayerDangerCheck(player, enemy3);
+				break;
+				
+				case 4: danger = PlayerDangerCheck(player, enemy4);
+				break;
+				
+				case 5: danger = PlayerDangerCheck(player, enemy5);
+				break;
+				}
+			}	
+		}
+		return danger;
 	}
 	
 }
