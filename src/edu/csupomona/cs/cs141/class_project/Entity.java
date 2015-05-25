@@ -35,5 +35,13 @@ public class Entity {
 			return true;
 		}
 	}
+	
+	public int giveXPos() {
+		return posX;
+	}
+	
+	public int giveYPos() {
+		return posY;
+	}
 
 }
