@@ -16,6 +16,10 @@ package edu.csupomona.cs.cs141.class_project;
  *
  */
 public class Player extends Entity {
+	
+	public Player() {
+		super(0, 8);
+	}
 	/**
 	 * 
 	 */
@@ -37,4 +41,9 @@ public class Player extends Entity {
 		return false;
 		
 	}
+	public void Turn() {
+		// TODO Auto-generated method stub
+		
+	}
+	
 }

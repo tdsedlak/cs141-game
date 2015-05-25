@@ -23,19 +23,27 @@ public class Board {
 	private char boardArray[][] = new char[9][9];
 	private char boardRulesArray[][] = new char [9][9];
 	private char powerUpArray[][] = new char [9][9];
+	char EMPTY = ' ';
+	char ROOM = 'R';
+	char PLAYER = 'P';
+	char ENEMY = 'E';
+	char INVIN = 'I';
+	char BULLET = 'B';
+	char RADAR = 'G';
+	char SUITCASE = 'S';
+	char ZONE = 'Z';
+	
+	Player player;
+	Enemy enemy0;
+	Enemy enemy1;
+	Enemy enemy2;
+	Enemy enemy3;
+	Enemy enemy4;
+	Enemy enemy5;
 	/**
 	 * 
 	 */
 	public Board() {
-		char EMPTY = ' ';
-		char ROOM = 'R';
-		char PLAYER = 'P';
-		char ENEMY = 'E';
-		char INVIN = 'I';
-		char BULLET = 'B';
-		char RADAR = 'G';
-		char SUITCASE = 'S';
-		char ZONE = 'Z';
 		
 		initializeBoardArray(EMPTY);
 		initializeBoardRulesArray(EMPTY, ZONE);
@@ -201,7 +209,8 @@ public class Board {
 	}
 	
 	public void initializePlayerPosition(char PLAYER) {
-			boardArray[0][8] = PLAYER;	
+		Player player = new Player();
+		boardArray[0][8] = PLAYER;	
 	}
 	
 	public void initializeEnemyPositions(char ENEMY, char EMPTY) {
@@ -213,6 +222,7 @@ public class Board {
 			{
 				if(boardArray[row][col] == EMPTY && boardRulesArray[row][col] == EMPTY) {
 					boardArray[row][col] = ENEMY;
+					CreateEnemy(numberOfEnemies, row, col);
 					numberOfEnemies++;
 				}
 				else{
@@ -222,6 +232,24 @@ public class Board {
 			}	
 	}
 	
+	private void CreateEnemy(int numberOfEnemies, int row, int col) {
+		switch (numberOfEnemies) {
+		case 0: Enemy enemy0 = new Enemy(row, col);
+				break;
+		case 1: Enemy enemy1 = new Enemy(row, col);
+				break;
+		case 2: Enemy enemy2 = new Enemy(row, col);
+				break;
+		case 3: Enemy enemy3 = new Enemy(row, col);
+				break;
+		case 4: Enemy enemy4 = new Enemy(row, col);
+				break;
+		case 5: Enemy enemy5 = new Enemy(row, col);
+				break;
+		}
+		
+	}
+
 	public char[][] giveBoard() {
 		return boardArray;
 	}
@@ -234,5 +262,24 @@ public class Board {
 		return powerUpArray;
 	}
 	
+	public void changePlayerPosition(int oldPosX, int oldPosY, int newPosX, int newPosY) {
+		boardArray[oldPosX][oldPosY] = EMPTY;
+		boardArray[newPosX][newPosY] = PLAYER;
+	}
+	
+	public void changeEnemyPosition(int oldPosX, int oldPosY, int newPosX, int newPosY) {
+		boardArray[oldPosX][oldPosY] = EMPTY;
+		boardArray[newPosX][newPosY] = ENEMY;
+	}
+
+	public void Turn() {
+		player.Turn();
+		enemy0.Turn();
+		enemy1.Turn();
+		enemy2.Turn();
+		enemy3.Turn();
+		enemy4.Turn();
+		enemy5.Turn();
+	}
 	
 }
