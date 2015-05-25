@@ -16,18 +16,29 @@ package edu.csupomona.cs.cs141.class_project;
  *
  */
 public class GameEngine {
+	
+	boolean gameRunning;
 	/**
 	 * 
 	 */
-	public void debug () {
+	public void debug() {
 		
 	}
 	public void Start() {
-		Player player = new Player();
 		Board board = new Board();
 		UserInterface ui = new UserInterface();
 		
+		gameRunning = true;
+		
 		ui.PrintBoard(board.giveBoard(), board.giveBoardRules(),board.givePowerUpArray());
+		
+		while(gameRunning) {
+			Turn(board);
+		}
+	}
+	
+	public void Turn(Board board) {
+		board.Turn();
 	}
 
 }
