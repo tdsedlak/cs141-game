@@ -43,5 +43,10 @@ public class Entity {
 	public int giveYPos() {
 		return posY;
 	}
+	
+	public void changePos(int x, int y) {
+		posX = x;
+		posY = y;
+	}
 
 }

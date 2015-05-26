@@ -33,13 +33,13 @@ public class Board {
 	char SUITCASE = 'S';
 	char ZONE = 'Z';
 	
-	Player player;
-	Enemy enemy0;
-	Enemy enemy1;
-	Enemy enemy2;
-	Enemy enemy3;
-	Enemy enemy4;
-	Enemy enemy5;
+	Player player = new Player();
+	Enemy enemy0 = new Enemy(0,0);
+	Enemy enemy1 = new Enemy(0,0);
+	Enemy enemy2 = new Enemy(0,0);
+	Enemy enemy3 = new Enemy(0,0);
+	Enemy enemy4 = new Enemy(0,0);
+	Enemy enemy5 = new Enemy(0,0);
 	/**
 	 * 
 	 */
@@ -209,7 +209,6 @@ public class Board {
 	}
 	
 	public void initializePlayerPosition(char PLAYER) {
-		Player player = new Player();
 		boardArray[0][8] = PLAYER;	
 	}
 	
@@ -234,17 +233,17 @@ public class Board {
 	
 	private void CreateEnemy(int numberOfEnemies, int row, int col) {
 		switch (numberOfEnemies) {
-		case 0: Enemy enemy0 = new Enemy(row, col);
+		case 0: enemy0.changePos(row, col);
 				break;
-		case 1: Enemy enemy1 = new Enemy(row, col);
+		case 1: enemy1.changePos(row, col);
 				break;
-		case 2: Enemy enemy2 = new Enemy(row, col);
+		case 2: enemy2.changePos(row, col);
 				break;
-		case 3: Enemy enemy3 = new Enemy(row, col);
+		case 3: enemy3.changePos(row, col);
 				break;
-		case 4: Enemy enemy4 = new Enemy(row, col);
+		case 4: enemy4.changePos(row, col);
 				break;
-		case 5: Enemy enemy5 = new Enemy(row, col);
+		case 5: enemy5.changePos(row, col);
 				break;
 		}
 		
