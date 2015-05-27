@@ -41,9 +41,9 @@ public class Player extends Entity {
 		return false;
 		
 	}
-	public void Turn() {
-		// TODO Auto-generated method stub
-		
-	}
+//	public void Turn() {
+//		// TODO Auto-generated method stub
+//		
+//	}
 	
 }

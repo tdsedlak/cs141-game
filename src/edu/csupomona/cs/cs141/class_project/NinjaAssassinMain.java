@@ -24,6 +24,10 @@ public class NinjaAssassinMain {
 		GameEngine GameEngine = new GameEngine();
 		GameEngine.Start();
 
+//		UserInterface ui = new UserInterface();
+//		
+//		ui.initialMenu();
+//		
 	}
 
 }

@@ -33,13 +33,13 @@ public class Board {
 	char SUITCASE = 'S';
 	char ZONE = 'Z';
 	
-	Player player;
-	Enemy enemy0;
-	Enemy enemy1;
-	Enemy enemy2;
-	Enemy enemy3;
-	Enemy enemy4;
-	Enemy enemy5;
+	Player player = new Player();
+	Enemy enemy0 = new Enemy(0,0);
+	Enemy enemy1 = new Enemy(0,0);
+	Enemy enemy2 = new Enemy(0,0);
+	Enemy enemy3 = new Enemy(0,0);
+	Enemy enemy4 = new Enemy(0,0);
+	Enemy enemy5 = new Enemy(0,0);
 	/**
 	 * 
 	 */
@@ -55,6 +55,8 @@ public class Board {
 		initializeEnemyPositions(ENEMY, EMPTY);
 		
 	}
+	
+
 
 	public void initializeBoardArray(char EMPTY) {
 		for (int i = 0; i < boardArray.length; i++){
@@ -93,6 +95,8 @@ public class Board {
 		}
 	}
 	
+	
+	
 	public void initializeBothArrayRooms(char ROOM) {
 		boardArray [1][1] = ROOM;
 		boardArray [1][4] = ROOM;
@@ -123,6 +127,7 @@ public class Board {
 		powerUpArray [7][1] = ROOM;
 		powerUpArray [7][4] = ROOM;
 		powerUpArray [7][7] = ROOM;
+		
 	}
 	
 	public void initializeBriefcase(char SUITCASE) {
@@ -209,7 +214,6 @@ public class Board {
 	}
 	
 	public void initializePlayerPosition(char PLAYER) {
-		Player player = new Player();
 		boardArray[0][8] = PLAYER;	
 	}
 	
@@ -234,17 +238,17 @@ public class Board {
 	
 	private void CreateEnemy(int numberOfEnemies, int row, int col) {
 		switch (numberOfEnemies) {
-		case 0: Enemy enemy0 = new Enemy(row, col);
+		case 0: enemy0.changePos(row, col);
 				break;
-		case 1: Enemy enemy1 = new Enemy(row, col);
+		case 1: enemy1.changePos(row, col);
 				break;
-		case 2: Enemy enemy2 = new Enemy(row, col);
+		case 2: enemy2.changePos(row, col);
 				break;
-		case 3: Enemy enemy3 = new Enemy(row, col);
+		case 3: enemy3.changePos(row, col);
 				break;
-		case 4: Enemy enemy4 = new Enemy(row, col);
+		case 4: enemy4.changePos(row, col);
 				break;
-		case 5: Enemy enemy5 = new Enemy(row, col);
+		case 5: enemy5.changePos(row, col);
 				break;
 		}
 		
@@ -262,10 +266,14 @@ public class Board {
 		return powerUpArray;
 	}
 	
-	public void changePlayerPosition(int oldPosX, int oldPosY, int newPosX, int newPosY) {
-		boardArray[oldPosX][oldPosY] = EMPTY;
-		boardArray[newPosX][newPosY] = PLAYER;
+	public void changeOldEntityPosition(int oldPosX, int oldPosY, char a) {
+		boardArray[oldPosX][oldPosY] = a;
 	}
+	
+	public void changeNewEntityPosition(int newPosX, int newPosY, char a) {
+		boardArray[newPosX][newPosY] = a;
+	}
+
 	
 	public void changeEnemyPosition(int oldPosX, int oldPosY, int newPosX, int newPosY) {
 		boardArray[oldPosX][oldPosY] = EMPTY;
@@ -273,13 +281,118 @@ public class Board {
 	}
 
 	public void Turn() {
-		player.Turn();
-		enemy0.Turn();
-		enemy1.Turn();
-		enemy2.Turn();
-		enemy3.Turn();
-		enemy4.Turn();
-		enemy5.Turn();
+		if(AllPlayerDangerCheck()) {
+			// This would be where we end the game since the enemy killed the player.
+		}
+		EnemyTurn();
 	}
+
+	private void EnemyTurn() {
+		EnemyMove(enemy0);
+		EnemyMove(enemy1);
+		EnemyMove(enemy2);
+		EnemyMove(enemy3);
+		EnemyMove(enemy4);
+		EnemyMove(enemy5);
+	}
+
+
+
+	public void Shoot() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void Look() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public boolean PlayerDangerCheck(Player player, Enemy enemy) {
+		int playerPosX = player.giveXPos();
+		int playerPosY = player.giveYPos();
+		int enemyPosX = enemy.giveXPos();
+		int enemyPosY = enemy.giveYPos();
+		
+		if(playerPosX == enemyPosX) {
+			if(playerPosY == enemyPosY + 1 || playerPosY == enemyPosY - 1) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+		else if(playerPosY == enemyPosY) {
+			if(playerPosX == enemyPosX + 1 || playerPosX == enemyPosX - 1) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+		else {
+			return false;
+		}
+	}
+	
+	public boolean AllPlayerDangerCheck() {
+		
+		boolean danger = false;
+		
+		for(int i = 0; i < 5; i++) {
+			
+			while(danger == false) {
+				
+				switch (i) {
+				
+				case 0: danger = PlayerDangerCheck(player, enemy0);
+				break;
+						
+				case 1: danger = PlayerDangerCheck(player, enemy1);
+				break;
+					
+				case 2: danger = PlayerDangerCheck(player, enemy2);
+				break;
+					
+				case 3: danger = PlayerDangerCheck(player, enemy3);
+				break;
+				
+				case 4: danger = PlayerDangerCheck(player, enemy4);
+				break;
+				
+				case 5: danger = PlayerDangerCheck(player, enemy5);
+				break;
+				}
+			}	
+		}
+		return danger;
+	}
+
+	public boolean Move(int direction, Entity entity, char a) {
+		changeOldEntityPosition(entity.giveXPos(), entity.giveYPos(), EMPTY);
+		entity.Move(direction);
+		if(entity.checkMove(direction)) {
+			changeNewEntityPosition(entity.giveXPos(), entity.giveYPos(), a);
+			return true;
+		}
+		else {
+			changeOldEntityPosition(entity.giveXPos(), entity.giveYPos(), a);
+			return false;
+		}
+	}
+
+
+
+	public boolean PlayerMove(int direction) {
+		return Move(direction, player, PLAYER);
+	}
+	
+	public void EnemyMove(Enemy enemy) {
+		Move(enemy.chooseDirection(), enemy, ENEMY);
+	}
+
+
+
+
 	
 }
