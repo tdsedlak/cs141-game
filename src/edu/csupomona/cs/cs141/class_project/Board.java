@@ -390,5 +390,9 @@ public class Board {
 	public void EnemyMove(Enemy enemy) {
 		Move(enemy.chooseDirection(), enemy, ENEMY);
 	}
+
+
+
+
 	
 }

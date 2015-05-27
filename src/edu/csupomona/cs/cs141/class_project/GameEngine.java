@@ -58,9 +58,22 @@ public class GameEngine {
 			choice = ui.PlayerMenu();
 			switch (choice) {
 			case 1: // Move
-					boolean valid = false;
-					while(!valid) {
+					boolean valid = true;
+					boolean enemyValid = true;
+					while(valid) {
 						valid = board.PlayerMove(ui.ChooseDirection());
+						System.out.println("Check");
+						valid = false;
+					}
+					
+					while(enemyValid){
+						board.EnemyMove(board.enemy0);
+						board.EnemyMove(board.enemy1);
+						board.EnemyMove(board.enemy2);
+						board.EnemyMove(board.enemy3);
+						board.EnemyMove(board.enemy4);
+						enemyValid = false;
+						
 					}
 					inMenu = false;
 			break;
@@ -77,9 +90,10 @@ public class GameEngine {
 			break;	
 			}
 		}
-		board.Turn();
 		
 		ui.PrintBoard(board.giveBoard(), board.giveBoardRules(),board.givePowerUpArray());
+		
+		Turn(board);
 	}	
 }
 
