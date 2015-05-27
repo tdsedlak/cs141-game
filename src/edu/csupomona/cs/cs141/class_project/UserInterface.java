@@ -12,10 +12,33 @@
  */
 package edu.csupomona.cs.cs141.class_project;
 
+import java.util.Scanner;
+
 /**
  *
  */
 public class UserInterface {
+	
+	public void initialMenu(){
+				int choice=0;
+				GameEngine GameEngine = new GameEngine();
+				Scanner decision= new Scanner(System.in);
+				System.out.println("***WELCOME TO NINJA ASSASSIN***\n");
+				System.out.println("New Game(1)\nSaved Game(2)\nExit(0)\n");
+				choice= decision.nextInt();
+				decision.close();
+				if (choice == 1){
+				System.out.println("Game Started");
+					GameEngine.Start();
+				}
+				else if (choice == 2){
+					System.out.println("Game Continued");
+				}
+				else if (choice == 0){
+					initialMenu();
+				}
+			}
+		 
 	
 	public void menu () {
 		
@@ -34,6 +57,7 @@ public class UserInterface {
 			}
 			System.out.println();
 		}
+		
 		
 		System.out.println();
 		

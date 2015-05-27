@@ -32,6 +32,8 @@ public class Board {
 	char RADAR = 'G';
 	char SUITCASE = 'S';
 	char ZONE = 'Z';
+	private int oldPosX;
+	private int oldPosY;
 	
 	Player player = new Player();
 	Enemy enemy0 = new Enemy(0,0);
@@ -54,6 +56,11 @@ public class Board {
 		initializePlayerPosition(PLAYER);
 		initializeEnemyPositions(ENEMY, EMPTY);
 		
+	}
+	
+	public Board(int oldPosX, int oldPosY){
+		oldPosX=oldPosX;
+		oldPosY=oldPosY;
 	}
 
 	public void initializeBoardArray(char EMPTY) {
@@ -93,6 +100,8 @@ public class Board {
 		}
 	}
 	
+	
+	
 	public void initializeBothArrayRooms(char ROOM) {
 		boardArray [1][1] = ROOM;
 		boardArray [1][4] = ROOM;
@@ -123,6 +132,7 @@ public class Board {
 		powerUpArray [7][1] = ROOM;
 		powerUpArray [7][4] = ROOM;
 		powerUpArray [7][7] = ROOM;
+		
 	}
 	
 	public void initializeBriefcase(char SUITCASE) {
@@ -210,6 +220,8 @@ public class Board {
 	
 	public void initializePlayerPosition(char PLAYER) {
 		boardArray[0][8] = PLAYER;	
+		oldPosX=0;
+		oldPosY=0;
 	}
 	
 	public void initializeEnemyPositions(char ENEMY, char EMPTY) {
@@ -261,10 +273,17 @@ public class Board {
 		return powerUpArray;
 	}
 	
-	public void changePlayerPosition(int oldPosX, int oldPosY, int newPosX, int newPosY) {
-		boardArray[oldPosX][oldPosY] = EMPTY;
-		boardArray[newPosX][newPosY] = PLAYER;
-	}
+//	public void changePlayerPosition(int oldPosX, int oldPosY, int newPosX, int newPosY) {
+//		boardArray[oldPosX][oldPosY] = EMPTY;
+//		boardArray[newPosX][newPosY] = PLAYER;
+//	}
+
+	public void changePlayerPosition(int newPosX, int newPosY) {
+	boardArray[oldPosX][oldPosY] = EMPTY;
+	boardArray[newPosX][newPosY] = PLAYER;
+	oldPosX=newPosX;
+	oldPosY=newPosY;
+}
 	
 	public void changeEnemyPosition(int oldPosX, int oldPosY, int newPosX, int newPosY) {
 		boardArray[oldPosX][oldPosY] = EMPTY;

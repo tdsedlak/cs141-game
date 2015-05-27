@@ -21,9 +21,13 @@ public class NinjaAssassinMain {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		GameEngine GameEngine = new GameEngine();
-		GameEngine.Start();
+//		GameEngine GameEngine = new GameEngine();
+//		GameEngine.Start();
 
+		UserInterface ui = new UserInterface();
+		
+		ui.initialMenu();
+		
 	}
 
 }
