@@ -19,31 +19,17 @@ import java.util.Scanner;
  */
 public class UserInterface {
 	
-	public void initialMenu(){
+	Scanner decision= new Scanner(System.in);
+	
+	public int initialMenu(){
 				int choice=0;
-				GameEngine GameEngine = new GameEngine();
-				Scanner decision= new Scanner(System.in);
 				System.out.println("***WELCOME TO NINJA ASSASSIN***\n");
 				System.out.println("New Game(1)\nSaved Game(2)\nExit(0)\n");
 				choice= decision.nextInt();
-				decision.close();
-				if (choice == 1){
-				System.out.println("Game Started");
-					GameEngine.Start();
-				}
-				else if (choice == 2){
-					System.out.println("Game Continued");
-				}
-				else if (choice == 0){
-					initialMenu();
-				}
+				return choice;
 			}
 		 
-	
-	public void menu () {
-		
-	}
-	
+
 	public boolean saveGame() {
 		return false;
 		
@@ -81,5 +67,17 @@ public class UserInterface {
 		
 		System.out.println();
 		
+	}
+
+
+	public int PlayerMenu() {
+		System.out.println("*What do you want to do?*\n1-MOVE\n2-LOOK\n3-ATTACK\n4-SAVE\n5-EXIT\n6-SETTINGS");
+		return decision.nextInt();
+	}
+
+
+	public int ChooseDirection() {
+		System.out.println("Choose a direction\n1-UP\n2-RIGHT\n3-DOWN\n4-LEFT");
+		return decision.nextInt() - 1;
 	}
 }

@@ -21,6 +21,8 @@ import java.util.Scanner;
 public class GameEngine {
 	
 	boolean gameRunning;
+	
+	UserInterface ui = new UserInterface();
 	/**
 	 * 
 	 */
@@ -28,41 +30,57 @@ public class GameEngine {
 		
 	}
 	public void Start() {
-		Board board = new Board();
-		UserInterface ui = new UserInterface();
-		
-		gameRunning = true;
-	//	ui.PrintBoard(board.giveBoard(), board.giveBoardRules(),board.givePowerUpArray());
+		int choice=0;
+		choice=ui.initialMenu();
+		if(choice==1){
+		gameStart();
+		}
 
-	//	Move();
-	//	Move();
+	}
+	
+	public void gameStart(){
+		Board board = new Board();
+
+		
 		ui.PrintBoard(board.giveBoard(), board.giveBoardRules(),board.givePowerUpArray());
 		
+		
+		gameRunning = true;
 		while(gameRunning) {
 			Turn(board);
 		}
 	}
 	
 	public void Turn(Board board) {
-		UserInterface ui = new UserInterface();
-
+		int choice;
+		boolean inMenu = true;
+		while(inMenu) {
+			choice = ui.PlayerMenu();
+			switch (choice) {
+			case 1: // Move
+					boolean valid = false;
+					while(!valid) {
+						valid = board.PlayerMove(ui.ChooseDirection());
+					}
+					inMenu = false;
+			break;
+			case 2: board.Look();
+			break;
+			case 3: board.Shoot();
+					inMenu = false;
+			break;
+			case 4: // Save
+			break;
+			case 5: // Exit
+			break;
+			case 6: // Settings
+			break;	
+			}
+		}
 		board.Turn();
-		ui.PrintBoard(board.giveBoard(), board.giveBoardRules(),board.givePowerUpArray());
-	}
-	public void Move(){
-		UserInterface ui = new UserInterface();
-		int choice=0;
-		int choice2=0;
-		Board board = new Board(0,0);
-		System.out.println("Want to move?");
-		Scanner b=new Scanner(System.in);
-		choice=b.nextInt();
-		choice2=b.nextInt();
-		b.close();
 		
-		board.changePlayerPosition(choice+1, choice2+1);
 		ui.PrintBoard(board.giveBoard(), board.giveBoardRules(),board.givePowerUpArray());
-
-	}
-
+	}	
 }
+
+

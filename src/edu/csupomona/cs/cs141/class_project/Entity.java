@@ -27,8 +27,19 @@ public class Entity {
 		}
 	}
 	
-	public boolean checkMove() {
+	public boolean checkMove(int direction) {
 		if(posX == -1 || posX == 9 || posY == -1 || posY == 9) {
+			switch (direction) {
+			case 0: direction = 2;
+			break;
+			case 1: direction = 3;
+			break;
+			case 2: direction = 0;
+			break;
+			case 3: direction = 1;
+			break;
+			}
+			Move(direction);
 			return false;
 		}
 		else {
