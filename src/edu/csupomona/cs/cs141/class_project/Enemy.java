@@ -29,8 +29,7 @@ public class Enemy extends Entity {
 		return rand.nextInt(4);
 	}
 
-	public void Turn() {
-		// TODO Auto-generated method stub
-		
-	}
+//	public void Turn() {
+//		Move(chooseDirection());
+//	}
 }

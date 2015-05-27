@@ -55,6 +55,8 @@ public class Board {
 		initializeEnemyPositions(ENEMY, EMPTY);
 		
 	}
+	
+
 
 	public void initializeBoardArray(char EMPTY) {
 		for (int i = 0; i < boardArray.length; i++){
@@ -93,6 +95,8 @@ public class Board {
 		}
 	}
 	
+	
+	
 	public void initializeBothArrayRooms(char ROOM) {
 		boardArray [1][1] = ROOM;
 		boardArray [1][4] = ROOM;
@@ -123,6 +127,7 @@ public class Board {
 		powerUpArray [7][1] = ROOM;
 		powerUpArray [7][4] = ROOM;
 		powerUpArray [7][7] = ROOM;
+		
 	}
 	
 	public void initializeBriefcase(char SUITCASE) {
@@ -261,10 +266,14 @@ public class Board {
 		return powerUpArray;
 	}
 	
-	public void changePlayerPosition(int oldPosX, int oldPosY, int newPosX, int newPosY) {
-		boardArray[oldPosX][oldPosY] = EMPTY;
-		boardArray[newPosX][newPosY] = PLAYER;
+	public void changeOldEntityPosition(int oldPosX, int oldPosY, char a) {
+		boardArray[oldPosX][oldPosY] = a;
 	}
+	
+	public void changeNewEntityPosition(int newPosX, int newPosY, char a) {
+		boardArray[newPosX][newPosY] = a;
+	}
+
 	
 	public void changeEnemyPosition(int oldPosX, int oldPosY, int newPosX, int newPosY) {
 		boardArray[oldPosX][oldPosY] = EMPTY;
@@ -275,13 +284,28 @@ public class Board {
 		if(AllPlayerDangerCheck()) {
 			// This would be where we end the game since the enemy killed the player.
 		}
-		player.Turn();
-		enemy0.Turn();
-		enemy1.Turn();
-		enemy2.Turn();
-		enemy3.Turn();
-		enemy4.Turn();
-		enemy5.Turn();
+		EnemyTurn();
+	}
+
+	private void EnemyTurn() {
+		EnemyMove(enemy0);
+		EnemyMove(enemy1);
+		EnemyMove(enemy2);
+		EnemyMove(enemy3);
+		EnemyMove(enemy4);
+		EnemyMove(enemy5);
+	}
+
+
+
+	public void Shoot() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void Look() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	public boolean PlayerDangerCheck(Player player, Enemy enemy) {
@@ -343,5 +367,32 @@ public class Board {
 		}
 		return danger;
 	}
+
+	public boolean Move(int direction, Entity entity, char a) {
+		changeOldEntityPosition(entity.giveXPos(), entity.giveYPos(), EMPTY);
+		entity.Move(direction);
+		if(entity.checkMove(direction)) {
+			changeNewEntityPosition(entity.giveXPos(), entity.giveYPos(), a);
+			return true;
+		}
+		else {
+			changeOldEntityPosition(entity.giveXPos(), entity.giveYPos(), a);
+			return false;
+		}
+	}
+
+
+
+	public boolean PlayerMove(int direction) {
+		return Move(direction, player, PLAYER);
+	}
+	
+	public void EnemyMove(Enemy enemy) {
+		Move(enemy.chooseDirection(), enemy, ENEMY);
+	}
+
+
+
+
 	
 }
